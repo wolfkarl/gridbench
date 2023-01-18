@@ -23,6 +23,7 @@ class CallResult:
 
     def as_dict(self):
         d = {
+            "run_name": self.run_name,
             "start_time": self.start_time,
             "runtime": self.runtime.total_seconds(),
         }
@@ -44,7 +45,7 @@ class Bench:
 
     def run(self, run_name: str = ""):
         if run_name == "":
-            run_name = str(datetime.now)
+            run_name = str(datetime.now())
         results = []
         for pc in self.__parameter_combinations():
             # parameters can be scalar or an (alias, value) tuple
